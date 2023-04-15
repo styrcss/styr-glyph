@@ -1,0 +1,36 @@
+/**
+ * Styr-Glyph Font
+ *
+ */
+@font-face {
+  font-family: 'Styr-Glyph';
+  src: url('../font/styr-glyph.eot?1681570104595');
+  src: url('../font/styr-glyph.eot?#iefix-1681570104595') format('embedded-opentype'),
+    url('../font/styr-glyph.woff2?1681570104595') format('woff2'),
+    url('../font/styr-glyph.woff?1681570104595') format('woff'),
+    url('../font/styr-glyph.ttf?1681570104595') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+.glyph[class^='glyph-']:before,
+.glyph[class*=' glyph-']:before {
+  font-family: 'Styr-Glyph';
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* glyph list */
+
+.glyph.glyph-wolf-paw:before {
+  content: '\ea01';
+}

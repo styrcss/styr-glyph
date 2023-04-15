@@ -1,0 +1,55 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+include:
+	- template: Security/SAST.gitlab-ci.yml
+
+stages:
+  - vet
+	- test
+  - build
+
+check:
+  stage: vet
+  image: node:18.15.0
+  services:
+  variables:
+    NODE_ENV: development
+  before_script:
+    - node --version
+    - npm --version
+    - npm install
+  script:
+    - npm run lint
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  except:
+    - tags
+
+sast:
+  stage: test
+
+build-debug:
+  stage: build
+  image: node:18.15.0
+  services:
+  variables:
+    NODE_ENV: development
+  before_script:
+    - node --version
+    - npm --version
+    - npm install
+  script:
+    - npm run build
+  cache:
+    untracked: true
+    paths:
+      - node_modules
+  except:
+    - tags

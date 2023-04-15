@@ -1,0 +1,30 @@
+{
+  "name": "styr-glyph",
+  "version": "0.0.1",
+  "description": "Glyphs can be used with Styr",
+  "author": "Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>",
+  "license": "MIT",
+  "homepage": "https://gitlab.com/styrcss/styr-glyph",
+  "keybords": [
+    "css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/styrscss/styr-glyph.git"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint gulpfile.js",
+    "build": "./node_modules/.bin/gulp build"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-cli": "^1.1.1",
+    "express": "^4.18.2",
+    "gulp": "^4.0",
+    "gulp-clean": "^0.4",
+    "gulp-consolidate": "^0.2",
+    "gulp-copy": "^4.0",
+    "gulp-iconfont": "^11.0",
+    "underscore": "^1.13"
+  }
+}

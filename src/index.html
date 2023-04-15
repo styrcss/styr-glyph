@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= fontName  %></title>
+  <link rel="stylesheet" href="/dst/css/glyph.css">
+  <link rel="stylesheet" href="/style.css">
+  <style>body{background-color:#ffffff;}</style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1><%= fontName %></h1>
+    <div class="usage">
+      <h2>Usage</h2>
+      <pre>&lt;i class="glyph glyph-NAME"&gt;&lt;/i&gt;
+&lt;span class="glyph glyph-NAME"&gt;&lt;/span&gt;
+
+&lt;!-- or use it in your CSS (e.g. wolf-paw) --&gt;
+i.g-wolf-paw:before {
+  font-family: 'Styr-Glyph';
+  content: '\ea01';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+</pre>
+    </div>
+    <div>
+      <h2>Glyph</h2>
+      <ul class="glyph">
+        <% _.each(glyphs, function(g){ %><li>
+          <i class="glyph glyph-<%= g.name %>"></i>
+          <style>
+i.g-<%= g.name %>:before {
+font-family: '<%= fontName %>';
+content: '\<%= g.unicode[0].charCodeAt(0).toString(16) %>';
+font-style: normal;
+font-weight: 300;
+font-size: 1.2rem;
+}
+          </style>
+          <i class="g-<%= g.name %>"></i>
+          <code>\<%= g.unicode[0].charCodeAt(0).toString(16) %></code>
+          <p class="name"><%= g.name %></p>
+        </li><% }) %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

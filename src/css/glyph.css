@@ -1,0 +1,37 @@
+/**
+ * <%= fontName %> Font
+ *
+ */<% filename = fontName.toLowerCase() %>
+@font-face {
+  font-family: '<%= fontName %>';
+  src: url('<%= fontPath %><%= filename %>.eot?<%= fontDate %>');
+  src: url('<%= fontPath %><%= filename %>.eot?#iefix-<%= fontDate %>') format('embedded-opentype'),
+    url('<%= fontPath %><%= filename %>.woff2?<%= fontDate %>') format('woff2'),
+    url('<%= fontPath %><%= filename %>.woff?<%= fontDate %>') format('woff'),
+    url('<%= fontPath %><%= filename %>.ttf?<%= fontDate %>') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+.<%= className %>[class^='glyph-']:before,
+.<%= className %>[class*=' glyph-']:before {
+  font-family: '<%= fontName %>';
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* glyph list */
+<% _.each(glyphs, function(g) { %>
+.<%= className %>.glyph-<%= g.name %>:before {
+  content: '\<%= g.unicode[0].charCodeAt(0).toString(16) %>';
+}
+<% }) %>

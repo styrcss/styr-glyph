@@ -1,0 +1,7 @@
+/static/*
+!/static/dst
+!/static/**/*/.gitignore
+
+package-lock.json
+
+/node_modules
